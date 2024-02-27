@@ -36,5 +36,6 @@ Route::middleware('auth:sanctum')->group(static function (): void {
         Route::post('', \App\Http\Controllers\Reservation\ReservationStoreController::class);
         Route::get('', \App\Http\Controllers\Reservation\ReservationIndexController::class);
         Route::get('{id}', \App\Http\Controllers\Reservation\ReservationShowController::class);
+        Route::put('{id}', \App\Http\Controllers\Reservation\ReservationUpdateController::class);
     });
 });

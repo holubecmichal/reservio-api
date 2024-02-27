@@ -57,6 +57,9 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/422"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -119,6 +122,9 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/422"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -140,6 +146,9 @@
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -161,6 +170,9 @@
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -198,6 +210,9 @@
                     },
                     "401": {
                         "$ref": "#/components/responses/401"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -387,6 +402,9 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/422"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             },
@@ -453,6 +471,9 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/422"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -500,6 +521,9 @@
                     },
                     "404": {
                         "$ref": "#/components/responses/404"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             },
@@ -558,6 +582,9 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/422"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             },
@@ -590,6 +617,9 @@
                     },
                     "404": {
                         "$ref": "#/components/responses/404"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/429"
                     }
                 }
             }
@@ -754,6 +784,9 @@
             },
             "204": {
                 "description": "Successfull operation, No content"
+            },
+            "429": {
+                "description": "Too many requests"
             }
         }
     }

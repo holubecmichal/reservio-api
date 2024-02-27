@@ -7,7 +7,7 @@ use App\Http\Requests\Reservation\ReservationUpdateRequest;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationUpdateController extends Controller
+class ReservationUpdateController extends AbstractController
 {
     /**
      * Handle the incoming request.
@@ -19,6 +19,8 @@ class ReservationUpdateController extends Controller
         $reservation = $user->reservations()->findOrFail($request->route('id'));
 
         $reservation->update($request->validated());
+
+        $this->forgetReservationCache($user, $reservation);
 
         return response()->noContent();
     }

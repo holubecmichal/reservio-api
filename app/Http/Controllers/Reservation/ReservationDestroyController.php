@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Reservation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationDestroyRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationDestroyController extends Controller
+class ReservationDestroyController extends AbstractController
 {
     /**
      * Handle the incoming request.
@@ -19,6 +20,8 @@ class ReservationDestroyController extends Controller
         $reservation = $user->reservations()->findOrFail($request->route('id'));
 
         $reservation->delete();
+
+        $this->forgetReservationCache($user, $reservation);
 
         return response()->noContent();
     }

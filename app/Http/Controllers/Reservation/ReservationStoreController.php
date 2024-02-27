@@ -8,7 +8,7 @@ use App\Http\Resources\ReservationShowResource;
 use App\Models\Reservation;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationStoreController extends Controller
+class ReservationStoreController extends AbstractController
 {
     /**
      * Handle the incoming request.

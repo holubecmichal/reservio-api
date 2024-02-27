@@ -9,7 +9,7 @@ use App\Models\Reservation;
 use Illuminate\Database\Eloquent\Builder;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationIndexController extends Controller
+class ReservationIndexController extends AbstractController
 {
     /**
      * Handle the incoming request.

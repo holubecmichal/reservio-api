@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Reservation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationShowRequest;
 use App\Http\Resources\ReservationShowResource;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationShowController extends Controller
+class ReservationShowController extends AbstractController
 {
     /**
      * Handle the incoming request.
@@ -17,8 +19,19 @@ class ReservationShowController extends Controller
     {
         $user = $request->user();
 
-        $reservation = $user->reservations()->findOrFail($request->route('id'));
+        $reservation = $this->getReservation($user, $request);
 
         return (new ReservationShowResource($reservation))->toResponse($request);
+    }
+
+    public function getReservation(User $user, ReservationShowRequest $request): mixed
+    {
+        $cacheKey = $this->getReservationCacheKey($user, $request->route('id'));
+
+        return Cache::remember(
+            $cacheKey,
+            now()->addMinutes(10),
+            static fn () => $user->reservations()->findOrFail($request->route('id'))
+        );
     }
 }

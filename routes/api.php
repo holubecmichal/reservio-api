@@ -30,3 +30,9 @@ Route::prefix('auth')->group(static function (): void {
         Route::get('me', \App\Http\Controllers\Auth\MeController::class);
     });
 });
+
+Route::middleware('auth:sanctum')->group(static function (): void {
+    Route::prefix('reservations')->group(static function (): void {
+        Route::post('', \App\Http\Controllers\Reservation\ReservationStoreController::class);
+    });
+});

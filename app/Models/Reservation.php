@@ -100,4 +100,32 @@ class Reservation extends Model
     {
         return $this->updated_at;
     }
+
+    /**
+     * Scope by start at.
+     */
+    public static function scopeStartAtRange(Builder $builder, ?string $dateFrom = null, ?string $dateTo = null): void
+    {
+        if ($dateFrom !== null) {
+            $builder->where('start_at', '>=', $dateFrom);
+        }
+
+        if ($dateTo !== null) {
+            $builder->where('start_at', '<=', $dateTo);
+        }
+    }
+
+    /**
+     * Scope by end at.
+     */
+    public static function scopeEndAtRange(Builder $builder, ?string $dateFrom = null, ?string $dateTo = null): void
+    {
+        if ($dateFrom !== null) {
+            $builder->where('end_at', '>=', $dateFrom);
+        }
+
+        if ($dateTo !== null) {
+            $builder->where('end_at', '<=', $dateTo);
+        }
+    }
 }

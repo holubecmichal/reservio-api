@@ -23,4 +23,9 @@ Route::prefix('auth')->group(static function (): void {
 
     Route::middleware('throttle:3,1')
         ->post('login', \App\Http\Controllers\Auth\LoginController::class);
+
+    Route::middleware('auth:sanctum')->group(static function (): void {
+        Route::post('logout/current', \App\Http\Controllers\Auth\LogoutCurrentController::class);
+        Route::post('logout/all', \App\Http\Controllers\Auth\LogoutAllController::class);
+    });
 });

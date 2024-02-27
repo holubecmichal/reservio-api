@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use Database\Factories\UserFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
+
+class {{ class }} extends TestCase
+{
+    use RefreshDatabase;
+
+    public function test_example(): void
+    {
+        $user = UserFactory::new()->createOne();
+
+        Sanctum::actingAs($user);
+
+        $response = $this->getJson(URL::action(Controller::class));
+
+        $response = $this->postJson(URL::action(Controller::class), [
+            'email' => $user->email,
+        ]);
+
+        $response->assertOk();
+
+        $response->assertJsonStructure([
+            // data
+        ]);
+    }
+}

@@ -16,7 +16,7 @@ class RegisterControllerTest extends TestCase
     {
         $user = UserFactory::new()->makeOne();
 
-        $response = $this->post(URL::action(RegisterController::class), [
+        $response = $this->postJson(URL::action(RegisterController::class), [
             'name' => $user->name,
             'email' => $user->email,
             'password' => 'password',
@@ -27,6 +27,24 @@ class RegisterControllerTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'email' => $user->email,
+        ]);
+    }
+
+    public function test_register_email_duplicity(): void
+    {
+        $user = UserFactory::new()->createOne();
+
+        $response = $this->postJson(URL::action(RegisterController::class), [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertUnprocessable();
+
+        $response->assertJsonStructure([
+            'errors'
         ]);
     }
 }

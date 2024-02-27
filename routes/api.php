@@ -37,5 +37,6 @@ Route::middleware('auth:sanctum')->group(static function (): void {
         Route::get('', \App\Http\Controllers\Reservation\ReservationIndexController::class);
         Route::get('{id}', \App\Http\Controllers\Reservation\ReservationShowController::class);
         Route::put('{id}', \App\Http\Controllers\Reservation\ReservationUpdateController::class);
+        Route::delete('{id}', \App\Http\Controllers\Reservation\ReservationDestroyController::class);
     });
 });

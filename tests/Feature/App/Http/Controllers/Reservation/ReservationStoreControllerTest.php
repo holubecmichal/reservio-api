@@ -30,6 +30,8 @@ class ReservationStoreControllerTest extends TestCase
         $response->assertJsonStructure([
             'data' => $this->reservationShowStructure(),
         ]);
+
+        $this->assertDatabaseCount('reservations', 1);
     }
 
     public function test_reservation_store_unauthenticated(): void

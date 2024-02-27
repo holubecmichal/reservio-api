@@ -23,6 +23,7 @@ class ReservationIndexResource extends JsonResource
             'start_at' => $this->getStartAt(),
             'end_at' => $this->getEndAt(),
             'description' => $this->getDescription(),
+            'user' => new UserResource($this->getUser()),
             'created_at' => $this->getCreatedAt(),
             'updated_at' => $this->getUpdatedAt(),
         ];

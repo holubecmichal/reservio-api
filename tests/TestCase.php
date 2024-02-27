@@ -15,6 +15,7 @@ abstract class TestCase extends BaseTestCase
             'start_at',
             'end_at',
             'description',
+            'user' => $this->userStructure(),
             'created_at',
             'updated_at',
         ];
@@ -28,6 +29,14 @@ abstract class TestCase extends BaseTestCase
             'email',
             'created_at',
             'updated_at',
+        ];
+    }
+
+    protected function userStructure(): array
+    {
+        return [
+            'name',
+            'email',
         ];
     }
 }

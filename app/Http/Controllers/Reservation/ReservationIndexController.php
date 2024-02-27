@@ -20,6 +20,8 @@ class ReservationIndexController extends Controller
 
         $builder = $user->reservations()->getQuery();
 
+        $builder->with(['user']);
+
         $this->filterStartAt($request, $builder);
         $this->filterEndAt($request, $builder);
 

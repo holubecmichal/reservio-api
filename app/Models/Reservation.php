@@ -62,6 +62,14 @@ class Reservation extends Model
     }
 
     /**
+     * User getter.
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
      * Start at getter.
      */
     public function getStartAt(): Carbon

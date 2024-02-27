@@ -51,6 +51,7 @@ class ReservationIndexControllerTest extends TestCase
                     'start_at',
                     'end_at',
                     'description',
+                    'user' => $this->userStructure(),
                     'created_at',
                     'updated_at',
                 ]

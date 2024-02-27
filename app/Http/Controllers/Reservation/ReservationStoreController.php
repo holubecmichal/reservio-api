@@ -19,12 +19,7 @@ class ReservationStoreController extends Controller
 
         $data = $request->validated();
 
-        $reservation = Reservation::create([
-            'user_id' => $user->getId(),
-            'start_at' => $data['start_at'],
-            'end_at' => $data['end_at'],
-            'description' => $data['description'],
-        ]);
+        $reservation = $user->reservations()->create($data);
 
         return (new ReservationShowResource($reservation))->toResponse($request);
     }

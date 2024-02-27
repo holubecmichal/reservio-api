@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Reservation;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationIndexRequest;
 use App\Http\Resources\ReservationIndexResource;
 use App\Models\Reservation;

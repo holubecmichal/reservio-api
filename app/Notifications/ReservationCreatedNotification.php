@@ -32,7 +32,7 @@ class ReservationCreatedNotification extends Notification implements ShouldQueue
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(__('Reservation #:reservationId created', ['reservationId' => $this->reservation->getId()]))
             ->line(__('Your reservation #:reservationId, from :start_at to :end_at, has been created.', [
                 'reservationId' => $this->reservation->getId(),

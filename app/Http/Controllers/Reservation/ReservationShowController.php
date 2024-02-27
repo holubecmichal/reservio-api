@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Reservation;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationShowRequest;
 use App\Http\Resources\ReservationShowResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 

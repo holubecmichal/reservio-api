@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Reservation;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationDestroyRequest;
 use App\Notifications\ReservationCanceledNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
 class ReservationDestroyController extends AbstractController

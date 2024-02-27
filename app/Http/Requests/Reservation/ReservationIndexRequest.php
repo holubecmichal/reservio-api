@@ -36,7 +36,7 @@ class ReservationIndexRequest extends FormRequest
             'per_page' => ['integer', 'nullable', 'filled', 'min:1'],
             'page' => ['integer', 'nullable', 'filled', 'min:1'],
             'sort' => ['array', 'nullable', 'filled'],
-            'sort.*' => ['in:'.implode(',', self::SORT)],
+            'sort.*' => ['in:' . implode(',', self::SORT)],
         ];
     }
 }

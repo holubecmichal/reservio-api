@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -32,7 +31,7 @@ class ReservationCanceledNotification extends Notification implements ShouldQueu
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(__('Reservation #:reservationId canceled', ['reservationId' => $this->reservationId]))
             ->line(__('Your reservation #:reservationId has been canceled.', ['reservationId' => $this->reservationId]));
     }

@@ -34,8 +34,8 @@ class ReservationIndexControllerTest extends TestCase
 
         $response = $this->getJson(URL::action(ReservationIndexController::class, [
             'filter' => [
-                'gte_start_at' => Carbon::now()->toDateString(),
-                'lte_end_at' => Carbon::tomorrow()->toDateString(),
+                'gte_start_at' => Carbon::now()->toDateTimeString(),
+                'lte_end_at' => Carbon::now()->addDay()->toDateTimeString(),
             ],
             'sort' => ReservationIndexRequest::SORT
         ]));

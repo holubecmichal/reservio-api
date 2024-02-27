@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -42,7 +43,50 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'id' => 'int',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
+
+    /**
+     * ID getter.
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Email getter.
+     */
+    public function getEmail(): string
+    {
+    	return $this->email;
+    }
+
+    /**
+     * Name getter
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Created at getter.
+     */
+    public function getCreatedAt(): Carbon
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Updated at getter.
+     */
+    public function getUpdatedAt(): Carbon
+    {
+        return $this->updated_at;
+    }
 }

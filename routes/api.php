@@ -27,5 +27,6 @@ Route::prefix('auth')->group(static function (): void {
     Route::middleware('auth:sanctum')->group(static function (): void {
         Route::post('logout/current', \App\Http\Controllers\Auth\LogoutCurrentController::class);
         Route::post('logout/all', \App\Http\Controllers\Auth\LogoutAllController::class);
+        Route::get('me', \App\Http\Controllers\Auth\MeController::class);
     });
 });

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('auth')->group(static function (): void {
     Route::post('register', \App\Http\Controllers\Auth\RegisterController::class);
 
-    Route::middleware('throttle:3,1')
+    Route::middleware('throttle:5,1')
         ->post('login', \App\Http\Controllers\Auth\LoginController::class);
 
     Route::middleware('auth:sanctum')->group(static function (): void {
@@ -27,12 +27,10 @@ Route::prefix('auth')->group(static function (): void {
     });
 });
 
-Route::middleware('auth:sanctum')->group(static function (): void {
-    Route::prefix('reservations')->group(static function (): void {
-        Route::post('', \App\Http\Controllers\Reservation\ReservationStoreController::class);
-        Route::get('', \App\Http\Controllers\Reservation\ReservationIndexController::class);
-        Route::get('{id}', \App\Http\Controllers\Reservation\ReservationShowController::class);
-        Route::put('{id}', \App\Http\Controllers\Reservation\ReservationUpdateController::class);
-        Route::delete('{id}', \App\Http\Controllers\Reservation\ReservationDestroyController::class);
-    });
+Route::prefix('reservations')->middleware('auth:sanctum')->group(static function (): void {
+    Route::post('', \App\Http\Controllers\Reservation\ReservationStoreController::class);
+    Route::get('', \App\Http\Controllers\Reservation\ReservationIndexController::class);
+    Route::get('{id}', \App\Http\Controllers\Reservation\ReservationShowController::class);
+    Route::put('{id}', \App\Http\Controllers\Reservation\ReservationUpdateController::class);
+    Route::delete('{id}', \App\Http\Controllers\Reservation\ReservationDestroyController::class);
 });

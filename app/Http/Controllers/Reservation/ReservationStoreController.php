@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Reservation\ReservationStoreRequest;
 use App\Http\Resources\ReservationShowResource;
 use App\Models\Reservation;
+use App\Notifications\ReservationCreatedNotification;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
 class ReservationStoreController extends AbstractController
@@ -20,6 +22,8 @@ class ReservationStoreController extends AbstractController
         $data = $request->validated();
 
         $reservation = $user->reservations()->create($data);
+
+        $user->notify(new ReservationCreatedNotification($reservation));
 
         return (new ReservationShowResource($reservation))->toResponse($request);
     }

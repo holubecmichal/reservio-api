@@ -6,6 +6,7 @@ use App\Http\Controllers\Reservation\ReservationDestroyController;
 use Database\Factories\ReservationFactory;
 use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -16,6 +17,8 @@ class ReservationDestroyControllerTest extends TestCase
 
     public function test_reservation_destroy(): void
     {
+        Notification::fake();
+
         $user = UserFactory::new()->createOne();
 
         $reservation = ReservationFactory::new()->for($user)->createOne();
@@ -25,10 +28,14 @@ class ReservationDestroyControllerTest extends TestCase
         $response = $this->deleteJson(URL::action(ReservationDestroyController::class, ['id' => $reservation->getId()]));
 
         $response->assertNoContent();
+
+        Notification::assertSentTo($user, \App\Notifications\ReservationCanceledNotification::class);
     }
 
     public function test_reservation_destroy_not_found(): void
     {
+        Notification::fake();
+
         $user = UserFactory::new()->createOne();
 
         $reservation = ReservationFactory::new()->for(UserFactory::new())->createOne();
@@ -38,14 +45,20 @@ class ReservationDestroyControllerTest extends TestCase
         $response = $this->deleteJson(URL::action(ReservationDestroyController::class, ['id' => $reservation->getId()]));
 
         $response->assertNotFound();
+
+        Notification::assertNothingSent();
     }
 
     public function test_reservation_destroy_unauthenticated(): void
     {
+        Notification::fake();
+
         $reservation = ReservationFactory::new()->for(UserFactory::new())->createOne();
 
         $response = $this->deleteJson(URL::action(ReservationDestroyController::class, ['id' => $reservation->getId()]));
 
         $response->assertUnauthorized();
+
+        Notification::assertNothingSent();
     }
 }

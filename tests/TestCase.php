@@ -19,4 +19,15 @@ abstract class TestCase extends BaseTestCase
             'updated_at',
         ];
     }
+
+    protected function meStructure(): array
+    {
+        return [
+            'id',
+            'name',
+            'email',
+            'created_at',
+            'updated_at',
+        ];
+    }
 }

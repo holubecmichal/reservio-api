@@ -24,11 +24,7 @@ class MeControllerTest extends TestCase
         $response->assertOk();
 
         $response->assertJsonStructure([
-            'id',
-            'name',
-            'email',
-            'created_at',
-            'updated_at',
+            'data' => $this->meStructure()
         ]);
     }
 

@@ -16,6 +16,6 @@ class LogoutCurrentController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response()->make();
+        return response()->noContent();
     }
 }

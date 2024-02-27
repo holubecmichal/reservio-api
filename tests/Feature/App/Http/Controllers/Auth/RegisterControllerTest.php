@@ -23,10 +23,14 @@ class RegisterControllerTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $response->assertOk();
+        $response->assertCreated();
 
         $this->assertDatabaseHas('users', [
             'email' => $user->email,
+        ]);
+
+        $response->assertJsonStructure([
+            'data' => $this->meStructure()
         ]);
     }
 

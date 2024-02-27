@@ -24,7 +24,9 @@ class LoginControllerTest extends TestCase
         $response->assertOk();
 
         $response->assertJsonStructure([
-            'token'
+            'data' => [
+                'token'
+            ]
         ]);
 
         $this->assertDatabaseCount('personal_access_tokens', 1);

@@ -15,6 +15,6 @@ class LogoutAllController extends Controller
     {
         $request->user()->tokens()->delete();
 
-        return response()->make();
+        return response()->noContent();
     }
 }

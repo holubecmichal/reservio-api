@@ -17,6 +17,6 @@ class MeController extends Controller
     {
         $user = $request->user();
 
-        return response()->json(new MeResource($user));
+        return (new MeResource($user))->toResponse($request);
     }
 }

@@ -21,7 +21,7 @@ class LogoutAllControllerTest extends TestCase
 
         $response = $this->postJson(URL::action(LogoutAllController::class));
 
-        $response->assertOk();
+        $response->assertNoContent();
     }
 
     public function test_logout_all_unauthenticated(): void

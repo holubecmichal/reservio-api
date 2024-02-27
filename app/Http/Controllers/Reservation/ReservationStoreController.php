@@ -26,6 +26,6 @@ class ReservationStoreController extends Controller
             'description' => $data['description'],
         ]);
 
-        return response()->json(new ReservationShowResource($reservation), Response::HTTP_CREATED);
+        return (new ReservationShowResource($reservation))->toResponse($request);
     }
 }

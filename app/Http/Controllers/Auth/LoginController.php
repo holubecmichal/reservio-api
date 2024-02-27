@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         $token = $user->createToken('reservio-api');
 
-        return response()->json(new ApiTokenResource($token), Response::HTTP_OK);
+        return (new ApiTokenResource($token))->toResponse($request);
     }
 
     protected function sendFailedLoginResponse(): never

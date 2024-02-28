@@ -21,6 +21,7 @@ env:
 up:
 	docker-compose build
 	docker-compose up -d
+	docker-compose exec laravel.test composer install
 	docker-compose exec -T laravel.test nohup php artisan queue:work > /dev/null 2>&1 &
 
 .PHONY: migrate

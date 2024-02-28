@@ -13,6 +13,10 @@ phpcs:
 phpcbf:
 	-${MAKE_PHP} vendor/bin/phpcbf --standard=phpcs.xml app tests database
 
+.PHONY: env
+env:
+	cp .env.example .env
+
 .PHONY: up
 up:
 	docker-compose build

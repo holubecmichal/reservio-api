@@ -24,6 +24,7 @@ commands for system startup, shutdown, and testing.
 
 To launch using Docker the Makefile provides the following commands:
 
+- `make env` creates .env file from .env.example
 - `make up` builds and starts the system, run migrate, fill database with dummy data, and then starts queue worker.
 - `make down` Stops the system.
 - `make test` Builds and starts the system, runs tests, and then stops the system.

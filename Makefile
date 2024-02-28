@@ -21,9 +21,12 @@ env:
 up:
 	docker-compose build
 	docker-compose up -d
+	docker-compose exec -T laravel.test nohup php artisan queue:work > /dev/null 2>&1 &
+
+.PHONY: migrate
+migrate:
 	docker-compose exec laravel.test php artisan migrate
 	docker-compose exec laravel.test php artisan db:seed
-	docker-compose exec -T laravel.test nohup php artisan queue:work > /dev/null 2>&1 &
 
 .PHONY: down
 down:

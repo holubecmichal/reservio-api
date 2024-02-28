@@ -29,6 +29,10 @@ migrate:
 	docker-compose exec laravel.test php artisan migrate
 	docker-compose exec laravel.test php artisan db:seed
 
+.PHONY: key
+key:
+	docker-compose exec laravel.test php artisan key:generate
+
 .PHONY: down
 down:
 	docker-compose down

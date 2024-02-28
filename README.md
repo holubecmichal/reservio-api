@@ -22,16 +22,21 @@ commands for system startup, shutdown, and testing.
 
 ### Using Docker
 
-To launch using Docker the Makefile provides the following commands:
+To launch using Docker the Makefile provides the following commands.
 
+Init:
 - `make env` Creates .env file from .env.example
 - `make up` Builds and starts the system.
-
-After the system is started, it is possible to run the following commands:
+- `make key` Generate app key.
 - `make migrate` Run migrate, fill database with dummy data, and then starts queue worker.
+
+After init for only start system:
+- `make up`.
+
+Stop system:
 - `make down` Stops the system.
 
-For testing, the following command is available:
+Testing:
 - `make test` Builds and starts the system, runs tests, and then stops the system.
 
 The individual services are available at the following locations

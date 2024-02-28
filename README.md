@@ -24,7 +24,7 @@ commands for system startup, shutdown, and testing.
 
 To launch using Docker the Makefile provides the following commands:
 
-- `make up` builds and starts the system.
+- `make up` builds and starts the system, run migrate, fill database with dummy data, and then starts queue worker.
 - `make down` Stops the system.
 - `make test` Builds and starts the system, runs tests, and then stops the system.
 
@@ -32,7 +32,7 @@ The individual services are available at the following locations
 
 - API: http://0.0.0.0
 - Redis: localhost:6379
-- Mailpit: http://localhost:8025/
+- Mailpit: http://localhost:8025/ - catch all emails
 
 ### Manual installation
 
@@ -52,6 +52,9 @@ If asynchronous processing of the queue is set up, it is also necessary to start
 queue in the background.
 
 - `php artisan queue:work`
+
+To fill the database with dummy data, it is necessary to run the command. Dummy data are filled only in case of an empty database and local env `APP_ENV=local`. 
+- `php artisan db:seed`
 
 ## Tests
 
@@ -77,7 +80,8 @@ Available endpoints are:
 - `GET api/auth/me` - get auth user details
 
 
-- `GET api/reservations` - get all auth user reservations, some filters and sorting are available
+- `GET api/reservations` - get all auth user reservations, some filters and sorting are available, pagination is
+  supported
 - `GET api/reservations/{id}` - get auth user reservation by id
 - `POST api/reservations` - create new reservation for auth user
 - `PUT api/reservations/{id}` - update auth user reservation by id

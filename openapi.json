@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Název vašeho API",
+        "title": "Reservio API",
         "version": "1.0.0"
     },
     "paths": {
@@ -178,7 +178,7 @@
             }
         },
         "/api/auth/me": {
-            "post": {
+            "get": {
                 "summary": "Me detail",
                 "tags": [
                     "Auth"
@@ -783,7 +783,7 @@
                 "description": "Unprocessable Entity, validation failed"
             },
             "204": {
-                "description": "Successfull operation, No content"
+                "description": "Successful operation, No content"
             },
             "429": {
                 "description": "Too many requests"

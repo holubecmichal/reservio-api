@@ -62,6 +62,12 @@ queue in the background.
 To fill the database with dummy data, it is necessary to run the command. Dummy data are filled only in case of an empty database and local env `APP_ENV=local`. 
 - `php artisan db:seed`
 
+## Dummy data
+
+If `php artisan db:seed` is executed (Docker run it after `make migrate`), the database will be filled with dummy data. You can use existing user for login.
+- email: `testovaci@user.cz`
+- password: `password`
+
 ## Tests
 
 To run tests, you can use `make test` in the case of using Docker or `php artisan test` after the overall system setup.
